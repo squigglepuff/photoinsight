@@ -1,0 +1,62 @@
+ pkgname=photoinsight
+ pkgver=1.0.0
+ pkgrel=1
+ pkgdesc="Simple Photo Viewer"
+ arch=('x86_64')
+ license=('Apache')
+ depends=('qt5-base>=5.10.0-2' 'qt5-imageformats>=5.10.0-1' 'qt5-svg>=5.10.0-1' 'freeimage>=3.17.0-2')
+ source=('photoinsight.tar.gz')
+md5sums=('9c249d4cf2d6524149edddc6d90f3c92')
+
+package() {
+    # Install the main files.
+    install -d "${pkgdir}/usr/bin"
+    install -D -m 755 "${srcdir}/usr/bin/PhotoInsight" "${pkgdir}/usr/bin/PhotoInsight"
+
+    install -d "${pkgdir}/usr/share/applications"
+    install "${srcdir}/usr/share/applications/photoinsight.desktop" "${pkgdir}/usr/share/applications/photoinsight.desktop"
+
+    install -d "${pkgdir}/usr/share/pixmaps"
+    install "${srcdir}/usr/share/pixmaps/photoinsight.png" "${pkgdir}/usr/share/pixmaps/photoinsight.png"
+
+    # Update MIME types.
+    printf "Updating MIME types..."
+    xdg-mime default photoinsight.desktop image/bmp 
+    xdg-mime default photoinsight.desktop image/x-cut 
+    xdg-mime default photoinsight.desktop image/x-dds 
+    xdg-mime default photoinsight.desktop image/x-exr 
+    xdg-mime default photoinsight.desktop image/fax-g3 
+    xdg-mime default photoinsight.desktop image/gif 
+    xdg-mime default photoinsight.desktop image/vnd.radiance 
+    xdg-mime default photoinsight.desktop image/vnd.microsoft.icon 
+    xdg-mime default photoinsight.desktop image/x-iff 
+    xdg-mime default photoinsight.desktop image/j2k 
+    xdg-mime default photoinsight.desktop image/x-mng 
+    xdg-mime default photoinsight.desktop image/jp2 
+    xdg-mime default photoinsight.desktop image/jpeg 
+    xdg-mime default photoinsight.desktop image/vnd.ms-photo 
+    xdg-mime default photoinsight.desktop image/x-koala 
+    xdg-mime default photoinsight.desktop video/x-mng 
+    xdg-mime default photoinsight.desktop image/freeimage-pnm 
+    xdg-mime default photoinsight.desktop image/freeimage-pnm 
+    xdg-mime default photoinsight.desktop image/x-photo-cd 
+    xdg-mime default photoinsight.desktop image/x-pcx 
+    xdg-mime default photoinsight.desktop image/x-portable-floatmap 
+    xdg-mime default photoinsight.desktop image/freeimage-pnm 
+    xdg-mime default photoinsight.desktop image/freeimage-pnm 
+    xdg-mime default photoinsight.desktop image/x-pict 
+    xdg-mime default photoinsight.desktop image/png 
+    xdg-mime default photoinsight.desktop image/freeimage-pnm 
+    xdg-mime default photoinsight.desktop image/freeimage-pnm 
+    xdg-mime default photoinsight.desktop image/vnd.adobe.photoshop 
+    xdg-mime default photoinsight.desktop image/x-cmu-raster 
+    xdg-mime default photoinsight.desktop image/x-dcraw 
+    xdg-mime default photoinsight.desktop image/x-sgi 
+    xdg-mime default photoinsight.desktop image/x-tga 
+    xdg-mime default photoinsight.desktop image/tiff 
+    xdg-mime default photoinsight.desktop image/vnd.wap.wbmp 
+    xdg-mime default photoinsight.desktop image/webp 
+    xdg-mime default photoinsight.desktop image/x-xbitmap 
+    xdg-mime default photoinsight.desktop image/x-xpixmap 
+    printf "DONE\n"
+}
